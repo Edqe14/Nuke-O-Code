@@ -36,9 +36,10 @@ module.exports = exports = {
     const collector = msg.createReactionCollector((r, u) => Reactions.includes(r.emoji.name) && u.id === message.author.id, { time: 120000 });
     collector.on('collect', (r, u) => {
       r.users.remove(u);
+      if (r.emoji.name === '❌') return collector.stop();
+      if (i >= top10.length - 1 || i <= 0) return;
       if (r.emoji.name === '▶') i++;
       else if (r.emoji.name === '◀') i--;
-      else if (r.emoji.name === '❌') return collector.stop();
       else return all(msg);
       update(msg);
     });
@@ -48,6 +49,7 @@ module.exports = exports = {
     });
 
     async function update (m) {
+      if (!top10[i]) return;
       const { tags } = await nana.g(top10[i].id);
       embed.setDescription(`${i + 1}. **[${top10[i].title}](https://nhentai.net/g/${top10[i].id})**\n**ID**: ${top10[i].id}\n**Language**: ${top10[i].language}\n**Tags**: ${tags.map(t => t.name).join(', ')}`);
       embed.setImage(top10[i].thumbnail.s);
