@@ -18,7 +18,7 @@ module.exports = exports = {
     const random = bot.wholesome.list[Math.floor(Math.random() * bot.wholesome.list.length)];
 
     const embed = new Embed(1)
-      .setDescription(`**[${random.title}](${random.link})** by **${random.author}**\n\n**ID**: ${(random.link.match(NH_ID) || [])[0]}\n**Tags**: ${random.tags.length === 0 ? 'N/A' : random.tags.join(', ')}\n**Pages**: ${random.pages}\n**Tier**: ${random.tier}\n${random.warning ? `**Warning**: \`${random.warning || 'None'}` : ''}\``)
+      .setDescription(`**[${random.title}](${random.link})** by **${random.author}**\n\n**ID**: ${(random.link.match(NH_ID) || [])[0] ?? 'N/A'}\n**Tags**: ${random.tags.length === 0 ? 'N/A' : random.tags.join(', ')}\n**Pages**: ${random.pages}\n**Tier**: ${random.tier}\n${random.warning ? `**Warning**: \`${random.warning || 'None'}` : ''}\``)
       .setImage(random.image);
 
     return message.channel.send(embed);

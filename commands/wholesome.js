@@ -13,7 +13,7 @@ module.exports = exports = {
   async run (bot, message, args, config) {
     const wholesomeCommands = bot.commands
       .filter(c => c.category === 'wholesomelist' && c.name !== 'wholesome')
-      .map((c, _, i) => `> \`${c.name.replace('wholesome ', '')}\` **-** ${c.description}`);
+      .map((c) => `> \`${c.name.replace('wholesome ', '')}\` **-** ${c.description}`);
 
     const embed = new Embed(1)
       .setTitle('Welcome to the Wholesome Hentai God List!')
