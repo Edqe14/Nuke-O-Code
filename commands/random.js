@@ -1,5 +1,4 @@
 const { nana } = require('../index.js');
-const Embed = require('../utils/embed.js');
 
 module.exports = exports = {
   name: 'random',
@@ -10,6 +9,7 @@ module.exports = exports = {
   aliases: ['r'],
   usage: '',
   nsfw: true,
+  category: 'nhentai',
   async run (bot, message, args, config) {
     const { id } = await nana.random();
     bot.commands.get('doujin').run(bot, message, [id], config);
