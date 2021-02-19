@@ -1,6 +1,6 @@
 {
   "name": "nuke-o-code",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "idk what am i doing with my life",
   "main": "index.js",
   "scripts": {
