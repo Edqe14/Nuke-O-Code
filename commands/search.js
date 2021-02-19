@@ -36,11 +36,11 @@ module.exports = exports = {
     const collector = msg.createReactionCollector((r, u) => Reactions.includes(r.emoji.name) && u.id === message.author.id, { time: 120000 });
     collector.on('collect', (r, u) => {
       r.users.remove(u);
-      if (r.emoji.name === '❌') return collector.stop();
-      if (i >= top10.length - 1 || i <= 0) return;
       if (r.emoji.name === '▶') i++;
       else if (r.emoji.name === '◀') i--;
+      else if (r.emoji.name === '❌') return collector.stop();
       else return all(msg);
+      if (i > top10.length - 1 || i < 0) return;
       update(msg);
     });
 
