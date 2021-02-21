@@ -33,13 +33,13 @@ module.exports = exports = {
       await msg.react(r);
     });
 
-    const collector = msg.createReactionCollector((r, u) => Reactions.includes(r.emoji.name) && u.id === message.author.id, { time: 120000 });
+    const collector = msg.createReactionCollector((r, u) => Reactions.includes(r.emoji.name) && u.id === message.author.id, { idle: 60000 });
     collector.on('collect', (r, u) => {
       r.users.remove(u);
+      if (r.emoji.name === '❌') return collector.stop();
+      if (r.emoji.name === '📃') return all(msg);
       if (r.emoji.name === '▶') i++;
       else if (r.emoji.name === '◀') i--;
-      else if (r.emoji.name === '❌') return collector.stop();
-      else return all(msg);
       if (i > top10.length - 1 || i < 0) return;
       update(msg);
     });

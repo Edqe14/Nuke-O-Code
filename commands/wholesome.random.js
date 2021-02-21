@@ -3,14 +3,14 @@ const Embed = require('../utils/embed.js');
 const NH_ID = /(\d+)/;
 
 module.exports = exports = {
-  name: 'wholesome random',
+  name: 'wholesomerandom',
   description: 'Get a random doujin from the list',
   cooldown: 5,
   args: false,
   permissions: null,
   aliases: ['wr'],
   usage: '',
-  nsfw: false,
+  nsfw: true,
   category: 'wholesomelist',
   async run (bot, message, args, config) {
     await bot.waitListPopulate();

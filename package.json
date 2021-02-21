@@ -30,6 +30,7 @@
     "nana-api": "^1.1.3"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "semistandard": "^16.0.0"
   }
 }

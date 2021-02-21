@@ -56,17 +56,19 @@ const fetchList = async () => {
     else console.log('Populate using cached files');
   } else console.log('Fetching data...');
 
-  const [list, featured, recent] = (cacheExists && !outdated ? [
-    listCache.data,
-    featuredCache.data,
-    recentCache.data
-  ] : await Promise.all([
-    WholesomeList.fetchList(),
-    WholesomeList.fetchFeatured(),
-    WholesomeList.fetchRecent()
-  ]));
+  const [list, featured, recent] = (cacheExists && !outdated
+    ? [
+        listCache.data,
+        featuredCache.data,
+        recentCache.data
+      ]
+    : await Promise.all([
+      WholesomeList.fetchList(),
+      WholesomeList.fetchFeatured(),
+      WholesomeList.fetchRecent()
+    ]));
 
-  if (!cacheExists) {
+  if (!cacheExists || outdated) {
     fs.writeFileSync(listPath, JSON.stringify({ createdAt: Date.now(), data: list }));
     fs.writeFileSync(featuredPath, JSON.stringify({ createdAt: Date.now(), data: featured }));
     fs.writeFileSync(recentPath, JSON.stringify({ createdAt: Date.now(), data: recent }));

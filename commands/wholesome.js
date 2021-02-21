@@ -8,7 +8,7 @@ module.exports = exports = {
   permissions: null,
   aliases: ['w'],
   usage: '',
-  nsfw: false,
+  nsfw: true,
   category: 'wholesomelist',
   async run (bot, message, args, config) {
     const wholesomeCommands = bot.commands
