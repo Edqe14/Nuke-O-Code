@@ -9,7 +9,7 @@ const Reactions = [
 
 module.exports = exports = {
   name: 'wholesomesearch',
-  description: 'Get a random doujin from the list',
+  description: 'Filter out wholesomelist using queriess',
   cooldown: 5,
   args: true,
   permissions: null,
